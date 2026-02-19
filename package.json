@@ -1,0 +1,31 @@
+{
+  "name": "visual_programming",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:coverage": "vitest run --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seyonaru/visual_programming.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/seyonaru/visual_programming/issues"
+  },
+  "homepage": "https://github.com/seyonaru/visual_programming#readme",
+  "devDependencies": {
+    "@types/node": "^25.3.0",
+    "@vitest/coverage-v8": "^4.0.18",
+    "javascript": "^1.0.0",
+    "node": "^25.6.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  }
+}

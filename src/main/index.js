@@ -1,5 +1,21 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.StringFormatterNoSpace = exports.StringFormatterUpper = void 0;
+exports.createUser = createUser;
+exports.createBook = createBook;
+exports.calculateArea = calculateArea;
+exports.getStatusColor = getStatusColor;
+exports.getFirstElement = getFirstElement;
+exports.findById = findById;
 function createUser(id, name, email, isActive) {
     if (isActive === void 0) { isActive = true; }
+    if (email === undefined) {
+        return {
+            id: id,
+            name: name,
+            isActive: isActive
+        };
+    }
     return {
         id: id,
         name: name,
@@ -8,7 +24,7 @@ function createUser(id, name, email, isActive) {
     };
 }
 console.log('Task 1');
-console.log(createUser(1, "Asdf", false));
+console.log(createUser(1, "Asdf", undefined, false));
 console.log(createUser(2, "ILUGH", "email_example@local.com"));
 function createBook(book) {
     return book;
@@ -44,8 +60,9 @@ console.log(getStatusColor('active'));
 console.log(getStatusColor('inactive'));
 var StringFormatterUpper = function (str, uppercase) {
     if (uppercase === void 0) { uppercase = false; }
-    return uppercase ? str.toUpperCase() : str[0].toUpperCase() + str.slice(1);
+    return uppercase ? str.toUpperCase() : str.charAt(0).toUpperCase() + str.slice(1);
 };
+exports.StringFormatterUpper = StringFormatterUpper;
 var StringFormatterNoSpace = function (str, uppercase) {
     if (uppercase === void 0) { uppercase = false; }
     var res = str.replace(/\s+/g, '');
@@ -54,11 +71,12 @@ var StringFormatterNoSpace = function (str, uppercase) {
     }
     return res;
 };
+exports.StringFormatterNoSpace = StringFormatterNoSpace;
 console.log('Task 5');
-console.log(StringFormatterUpper('sgtjSynsNgh', false));
-console.log(StringFormatterUpper('sgtjsynsngh', true));
-console.log(StringFormatterNoSpace('sgtj sy nsn gh', true));
-console.log(StringFormatterNoSpace('sgtj Sy Nsn Gh', false));
+console.log((0, exports.StringFormatterUpper)('sgtjSynsNgh', false));
+console.log((0, exports.StringFormatterUpper)('sgtjsynsngh', true));
+console.log((0, exports.StringFormatterNoSpace)('sgtj sy nsn gh', true));
+console.log((0, exports.StringFormatterNoSpace)('sgtj Sy Nsn Gh', false));
 //6
 function getFirstElement(arr) {
     return arr[0];

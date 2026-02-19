@@ -1,27 +1,36 @@
 //1
-interface User {
+export interface User {
     id : number;
     name : string;
-    email? : string | unknown;
     isActive : boolean;
+    email?: string;
 }
 
-function createUser(
-    id : number, 
-    name : string, 
-    email? : string | unknown, 
-    isActive : boolean = true
-) : User {
+export function createUser(
+    id: number, 
+    name: string,  
+    isActive: boolean = true,
+    email?: string) : User {
+    console.log(`EMAIL: ${email}`);
+    if (email === undefined) {
+        
+        
+        return {
+            id,
+            name,
+            isActive
+        }
+    }
     return {
         id,
-        name,
-        email, 
-        isActive
+        name, 
+        isActive,
+        email
     }
 }
 console.log('Task 1');
 console.log(createUser(1, "Asdf", false));
-console.log(createUser(2, "ILUGH", "email_example@local.com"));
+console.log(createUser(2, "ILUGH", true, "email_example@local.com"));
 
 //2
 interface Book {
@@ -31,7 +40,7 @@ interface Book {
     genre : "fiction" | "non-fiction";
 }
 
-function createBook(book : Book) : Book {
+export function createBook(book : Book) : Book {
     return book;
 }
 
@@ -39,9 +48,9 @@ console.log('Task 2');
 console.log(createBook({title : "title1", author : "author1", genre: "fiction"}));
 console.log(createBook({ title: "title2", author: "author2",year : 1974, genre: "non-fiction" }));
 //3
-function calculateArea(shape : 'circle', radius : number) : number;
-function calculateArea(shape : 'square', side : number) : number;
-function calculateArea(shape : 'circle' | 'square', param : number) : number {
+export function calculateArea(shape : 'circle', radius : number) : number;
+export function calculateArea(shape : 'square', side : number) : number;
+export function calculateArea(shape : 'circle' | 'square', param : number) : number {
     if (shape === 'square') {
         return param * param;
     } else { 
@@ -56,7 +65,7 @@ console.log(calculateArea('square', 8));
 //4
 type Status = 'active' | 'inactive' | 'new';
 
-function getStatusColor(status : Status) : string {
+export function getStatusColor(status : Status) : string {
     if (status === 'active') {
         return 'green';
     } else if (status === 'inactive'){
@@ -73,11 +82,11 @@ console.log(getStatusColor('inactive'));
 //5
 type StringFormatter = (string : string, uppercase? :boolean | undefined) => string;
 
-const StringFormatterUpper : StringFormatter = (str, uppercase = false) => {
-    return uppercase ? str.toUpperCase() : str[0].toUpperCase() + str.slice(1);
+export const StringFormatterUpper : StringFormatter = (str, uppercase = false) => {
+    return uppercase ? str.toUpperCase() : str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-const StringFormatterNoSpace : StringFormatter = (str, uppercase = false) => {
+export const StringFormatterNoSpace : StringFormatter = (str, uppercase = false) => {
     let res = str.replace(/\s+/g, '');
     if (uppercase){
         res = res.toUpperCase();
@@ -91,7 +100,7 @@ console.log(StringFormatterUpper('sgtjsynsngh', true));
 console.log(StringFormatterNoSpace('sgtj sy nsn gh', true));
 console.log(StringFormatterNoSpace('sgtj Sy Nsn Gh', false));
 //6
-function getFirstElement<T>(arr : T[]) : T | undefined {
+export function getFirstElement<T>(arr : T[]) : T | undefined {
     return arr[0];
     
 }
@@ -108,7 +117,7 @@ interface HasId {
     id : number;
 }
 
-function findById<T extends HasId>(items : T[], id : number) : T | undefined {
+export function findById<T extends HasId>(items : T[], id : number) : T | undefined {
     return items.find(item => item.id === id);    
 }
 
