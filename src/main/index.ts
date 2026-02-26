@@ -13,8 +13,6 @@ export function createUser(
     email?: string) : User {
     console.log(`EMAIL: ${email}`);
     if (email === undefined) {
-        
-        
         return {
             id,
             name,

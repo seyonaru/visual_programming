@@ -7,8 +7,9 @@ exports.calculateArea = calculateArea;
 exports.getStatusColor = getStatusColor;
 exports.getFirstElement = getFirstElement;
 exports.findById = findById;
-function createUser(id, name, email, isActive) {
+function createUser(id, name, isActive, email) {
     if (isActive === void 0) { isActive = true; }
+    console.log("EMAIL: ".concat(email));
     if (email === undefined) {
         return {
             id: id,
@@ -19,13 +20,13 @@ function createUser(id, name, email, isActive) {
     return {
         id: id,
         name: name,
-        email: email,
-        isActive: isActive
+        isActive: isActive,
+        email: email
     };
 }
 console.log('Task 1');
-console.log(createUser(1, "Asdf", undefined, false));
-console.log(createUser(2, "ILUGH", "email_example@local.com"));
+console.log(createUser(1, "Asdf", false));
+console.log(createUser(2, "ILUGH", true, "email_example@local.com"));
 function createBook(book) {
     return book;
 }

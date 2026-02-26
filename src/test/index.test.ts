@@ -3,15 +3,15 @@ import {User, createUser, createBook, calculateArea, getFirstElement, getStatusC
 
 describe('User creation', () => {
     it('Creates Users', () => {
-        expect(createUser(1, "Asdf", false)).toStrictEqual({ id: 1, name: "Asdf", isActive: false });
-        expect(createUser(2, "ILUGH", true, "email_example@local.com")).toBe({ id: 2, name: "ILUGH", email: "email_example@local.com", isActive: true });
+        expect(createUser(1, "Asdf", false, undefined)).toEqual({ id: 1, name: "Asdf", isActive: false});
+        expect(createUser(2, "ILUGH", true, "email_example@local.com")).toEqual({ id: 2, name: "ILUGH", email: "email_example@local.com", isActive: true });
     });
 });
 
 describe('Book creation', () => {
     it('Creates Books', () => {
-        expect(createBook({ title: "title1", author: "author1", genre: "fiction" })).toBe({ title: "title1", author: "author1", genre: "fiction" });
-        expect(createBook({ title: "title2", author: "author2", year: 1974, genre: "non-fiction" })).toBe({ title: "title2", author: "author2", year: 1974, genre: "non-fiction" });
+        expect(createBook({ title: "title1", author: "author1", genre: "fiction" })).toEqual({ title: "title1", author: "author1", genre: "fiction" });
+        expect(createBook({ title: "title2", author: "author2", year: 1974, genre: "non-fiction" })).toEqual({ title: "title2", author: "author2", year: 1974, genre: "non-fiction" });
     });
 });
 
@@ -55,6 +55,6 @@ describe('Finding by ID', () => {
             { id: 2, name: "dhndm", isActive: false },
             { id: 3, name: "dm,j,jfjd", isActive: true }
         ];
-        expect(findById(users, 1)).toBe({ id: 1, name: "asfdb", isActive: true });
+        expect(findById(users, 1)).toEqual(users[0]);
     });
 });
