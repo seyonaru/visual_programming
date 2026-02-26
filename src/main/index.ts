@@ -1,4 +1,4 @@
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, writeFile, access, constants } from 'node:fs/promises';
 
 export function csvToJSON(input: string[], delimiter: string): object[] {
     if (!Array.isArray(input) || input.length === 0) {
@@ -41,13 +41,22 @@ export function csvToJSON(input: string[], delimiter: string): object[] {
                 obj[header] = value;
             }
         }
-
+        if (i === 0) {
+            continue;
+        }
+        
         result.push(obj);
     }
     return result;
 }
 
 export async function formatCSVFiletoJSONFile (input: string, output: string, delimiter: string): Promise<void> {
+    try {
+        await access(input, constants.F_OK);
+    }
+    catch {
+        throw new Error('file not found');
+    }
     const CSVdata = await readFile(input, 'utf-8');
 
     const lines = CSVdata.trim().split('\n');
