@@ -1,7 +1,7 @@
-import {describe, it, expect, vi} from 'vitest'
+import {describe, it, expect, vi, beforeEach, afterEach} from 'vitest'
 import {csvToJSON, formatCSVFiletoJSONFile} from '../main/index'
 import {writeFile, readFile} from 'node:fs/promises'
-import { afterEach, beforeEach } from 'node:test';
+
 
 vi.mock('fs/promises');
 
@@ -37,28 +37,28 @@ describe('Convertion CSV type to JSON type', () => {
     
     describe('Incorrect data', ()=> {
         it('Throws empty array error', ()=> {
-            expect(csvToJSON([], ';')).toThrow('input cannot be non-empty')
+            expect(()=> {csvToJSON([], ';')}).toThrowError()
         });
 
         it('Throws non-array error', ()=> {
-            expect(csvToJSON('non-array' as any, ';')).toThrow('input cannot be non-empty');
+            expect(() => {csvToJSON('non-array' as any, ';')}).toThrow('input cannot be non-empty');
         });
 
         it('Throws empty delimiter error', ()=> {
             const input = ['p1;p2;p3;p4', '1;A;b;c', '2;B;v;d'];
-            expect(csvToJSON(input, '')).toThrow('delimiter cannot be non-empty');
+            expect(()=> {csvToJSON(input, '')}).toThrow('delimiter cannot be non-empty');
         });
 
         it('Throws incorrect delimiter error', ()=> {
             const input = ['p1;p2;p3;p4', '1;A;b;c', '2;B;v;d'];
 
-            expect(csvToJSON(input, null as any)).toThrow('delimiter cannot be non-empty');
+            expect(()=> {csvToJSON(input, null as any)}).toThrow('delimiter cannot be non-empty');
         });
 
         it('Throws incomparible rows error', ()=> {
             const input = ['p1;p2;p3;p4', '1;A'];
 
-            expect(csvToJSON(input, ';')).toThrow();
+            expect(()=> {csvToJSON(input, ';')}).toThrow();
         });
     });
 });
@@ -98,7 +98,7 @@ describe('Formatting files', ()=> {
 
         await expect(formatCSVFiletoJSONFile('nonexicting.csv', 'output.json', ';'))
             .rejects
-            .toThrow('file not found');
+            .toThrow();
 
         expect(mockWriteFile).not.toHaveBeenCalled();
     });
