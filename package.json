@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest --watch"
+  },
+  "dependencies": {
+    "@types/node": "^25.3.1",
+    "node": "^25.7.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  }
+}
