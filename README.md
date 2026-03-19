@@ -1,4 +1,4 @@
-# Лабораторная работа 3 ![CI Status](https://github.com/seyonaru/visual_programming/actions/workflows/ci.yml/badge.svg?branch=lab4) 
+# Лабораторная работа 3 ![CI Status](https://github.com/seyonaru/visual_programming/actions/workflows/ci.yml/badge.svg?branch=lab3) 
 ---
 [![Возврат на master ветку](https://img.shields.io/badge/Возврат_на_master_ветку-Blue?style=for-the-badge)](https://github.com/seyonaru/visual_programming/tree/master)
 
