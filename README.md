@@ -29,6 +29,16 @@
 
 Расположение (ветка): [lab5](https://github.com/seyonaru/visual_programming/tree/lab5)
 
+### [Лабораторная работа 6](https://github.com/seyonaru/visual_programming/blob/lab6/README.md)
+Данная работа на написание утилитарных типов на Typescript и тестов для них.
+
+Расположение (ветка): [lab6](https://github.com/seyonaru/visual_programming/tree/lab6)
+
+### [Лабораторная работа 7](https://github.com/seyonaru/visual_programming/blob/lab7/README.md)
+Данная работа направлена на написание формы *BookCard*, работу с API и окружением react.
+
+Расположение (ветка): [lab7](https://github.com/seyonaru/visual_programming/tree/lab7)
+
 ## Структура репозитория 
 ````
 visual_programming/
@@ -36,5 +46,7 @@ visual_programming/
 ├── lab1            # Ветка для лабораторной работы 1
 ├── lab3            # Ветка для лабораторной работы 3
 ├── lab4            # Ветка для лабораторной работы 4
-└── lab5            # Ветка для лабораторной работы 5 
+├── lab5            # Ветка для лабораторной работы 5
+├── lab6            # Ветка для лабораторной работы 6
+└── lab7            # Ветка для лабораторной работы 7 
 ````
