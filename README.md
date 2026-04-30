@@ -1,40 +1,73 @@
-# *Главная страница*
-Работы в данном репозитории выполняет: 
+# React + TypeScript + Vite
 
-*студент группы ИП-412*
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-*Ларина Валентина*
+Currently, two official plugins are available:
 
-## Какие работы выполнены
-В данном разделе указаны выполненные лабораторные работы по курсу Милешко А. В. *"Визуальное программирование и челоеко-машинное взаимодействие: Часть 1"*.
-### Лабораторная работа 1
-Данная работа направлена на знакомство с языком TypeScript.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-Расположение (ветка): [lab1](https://github.com/seyonaru/visual_programming/tree/lab1)
-### Лабораторная работа 2
-Данная работа направлена на знакомство с механизмом автоматического тестирования GitHub Actions и тестирования кода при помощи библиотеки Vitest.
+## React Compiler
 
-Расположение (ветка): [lab1](https://github.com/seyonaru/visual_programming/tree/lab1)
-### [Лабораторная работа 3](https://github.com/seyonaru/visual_programming/blob/lab3/README.md)
-Данная работа направлена на понимание работы заглушек в тестировании.
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-Расположение (ветка): [lab3](https://github.com/seyonaru/visual_programming/tree/lab3)
-### [Лабораторная работа 4](https://github.com/seyonaru/visual_programming/blob/lab4/README.md)
-Данная работа направлена на написание типобезопасного конвейера и работу с каррированными функциями.
+## Expanding the ESLint configuration
 
-Расположение (ветка): [lab4](https://github.com/seyonaru/visual_programming/tree/lab4)
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-### [Лабораторная работа 5](https://github.com/seyonaru/visual_programming/blob/lab5/README.md)
-Данная работа направлена на обновление существуюещго конвейера (лабораторная работа 4) для добавления строго порядка шагов в нем.
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-Расположение (ветка): [lab5](https://github.com/seyonaru/visual_programming/tree/lab5)
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-## Структура репозитория 
-````
-visual_programming/
-├── master          # Основная ветка проекта
-├── lab1            # Ветка для лабораторной работы 1
-├── lab3            # Ветка для лабораторной работы 3
-├── lab4            # Ветка для лабораторной работы 4
-└── lab5            # Ветка для лабораторной работы 5 
-````
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
+
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
