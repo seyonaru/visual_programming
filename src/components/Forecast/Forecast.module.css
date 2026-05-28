@@ -1,0 +1,68 @@
+.container {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 24px;
+    margin-top: 20px;
+    min-width: 320px;
+    max-width: 400px;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+    font-size: 20px;
+    margin: 0 0 20px 0;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.day {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    color: white;
+    transition: background 0.2s;
+}
+
+.day:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.dayName {
+    flex: 1;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.icon {
+    font-size: 28px;
+    margin: 0 20px;
+}
+
+.temps {
+    display: flex;
+    gap: 16px;
+    min-width: 80px;
+    justify-content: flex-end;
+}
+
+.maxTemp {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.minTemp {
+    opacity: 0.7;
+    font-size: 16px;
+}
